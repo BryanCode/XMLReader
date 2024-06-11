@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=2.0">
+  <title>XML Reader - Bryan Lamanna</title>    
+    <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="bg-dark">
+
+<div class="container mt-5 upload">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-white">Assistente de XML:</h2>
+      <form>
+        <div class="mb-3">
+          <label for="fileInput" class="form-label">upload:</label>
+          <input class="form-control fileInput" type="file" id="fileInput">
+        </div>
+        <div class="mb-3">
+          <label for="searchInput" class="form-label">Selecione a TAG:</label>
+          <div class="input-group">
+            <input type="text" class="form-control tagName" id="searchInput" placeholder="Informe a TAG desejada">
+            <button class="btn btn-success enviar" type="button" id="searchButton">Pesquisar</button>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 resultados">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-white">Resultados:</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>Nº de consultas iniciais: <span class="consultasIniciais badge bg-success">00</span><i onclick="copyNumber(0)" class="fa-regular fa-copy"></i></p>
+                    <p>Nº de procedimentos preventivos: <span class="procedimentosPreventivos badge bg-success">00</span><i onclick="copyNumber(1)" class="fa-regular fa-copy"></i></p>
+                    <p>Nº dentes permanentes com endo concluida: <span class="dentesPermanentes badge bg-success">00</span><i onclick="copyNumber(2)" class="fa-regular fa-copy"></i></p>
+                    <p>Nº de proteses unitárias: <span class="protesesUnitarias badge bg-success">00</span><i onclick="copyNumber(3)" class="fa-regular fa-copy"></i></p>
+                    <p>Nº de raspagem supra gengival: <span class="raspagemSupra badge bg-success">00</span><i onclick="copyNumber(4)" class="fa-regular fa-copy"></i></p>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container text-center">
+    <div class="popup alert alert-danger text-center fixed-bottom" role="alert">
+            Valor copiado para area de transferência!
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

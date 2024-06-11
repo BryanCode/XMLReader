@@ -1,0 +1,24 @@
+.resultados span {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.resultados i {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.resultados i:hover {
+    transform: scale(1.2);
+}
+
+.popup {
+    max-width: fit-content;
+    opacity: 0;
+    transition: opacity 1s;
+    margin: 0 auto;
+    background-color: brown;
+  }
+  .show-popup {
+   opacity: 1;
+  }
