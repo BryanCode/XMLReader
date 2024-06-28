@@ -7,7 +7,9 @@ const resultProcPrevent = document.querySelector('.procedimentosPreventivos');
 const resultEndoConclDentesP = document.querySelector('.dentesPermanentes');
 const resultProtesesUnitarias = document.querySelector('.protesesUnitarias');
 const resultRaspSupraGengHemi = document.querySelector('.raspagemSupra');
-const arrayResults = [resultConsInic, resultProcPrevent, resultEndoConclDentesP, resultProtesesUnitarias, resultRaspSupraGengHemi];
+const resultVidasAtivasGP1 = document.querySelector('.vidasAtivasGP1');
+const resultVidasAtivasGP2 = document.querySelector('.vidasAtivasGP2');
+const arrayResults = [resultConsInic, resultProcPrevent, resultEndoConclDentesP, resultProtesesUnitarias, resultRaspSupraGengHemi, resultVidasAtivasGP1, resultVidasAtivasGP2];
 resultDiv.style.display = 'none';
 
 //NOMES DAS TAGS
@@ -27,10 +29,6 @@ function copyNumber(index) {
       }, 3000);
 }
 
-enviarBtn.addEventListener('click', () => {
-    somarValoresDaTag();
-});
-
 fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
     const reader = new FileReader();
@@ -46,12 +44,49 @@ fileInput.addEventListener('change', () => {
         const tagsEndoConclDentesP = xmlDoc.getElementsByTagName('trataEndoConclDentesP');
         const tagsProtesesUnitarias = xmlDoc.getElementsByTagName('protesesOdontoUnitarias');
         const tagsRaspSupraGengHemi = xmlDoc.getElementsByTagName('raspSupraGengHemi');
+        const ProcOdontoTags = xmlDoc.getElementsByTagName('procedimentosOdonto');
+        const ufs = xmlDoc.getElementsByTagName('uf');
+
+        const uniqueBeneficiariosGP1 = new Set();
+        const uniqueBeneficiariosGP2 = new Set();
 
         let totalConsInic = 0;
         let totalProcPrevent = 0;
         let totalEndoConclDentesP = 0;
         let totalProtesesUnitarias = 0;
         let totalRaspSupraGengHemi = 0;
+        let totalVidasAtivasGP1 = 0;
+        let totalVidasAtivasGP2 = 0;
+        let ufsArr = [];
+
+
+        for (let i = 0; i < ufs.length; i++) {
+            const uf = ufs[i].textContent;
+                ufsArr.push(uf);
+            
+        }
+
+        for (let i = 1; i < tagsRaspSupraGengHemi.length; i++) {
+            const eventos = tagsRaspSupraGengHemi[i].querySelector('beneficiarios');
+            if (eventos) {
+                const valor = parseInt(eventos.textContent);
+                if (!uniqueBeneficiariosGP2.has(valor)) {
+                    uniqueBeneficiariosGP2.add(valor);
+                    totalVidasAtivasGP2 += valor;
+                }
+            }
+        }
+
+        for (let i = 1; i < ProcOdontoTags.length; i++) {
+            const eventos = ProcOdontoTags[i].querySelector('beneficiarios');
+            if (eventos) {
+                const valor = parseInt(eventos.textContent);
+                if (!uniqueBeneficiariosGP1.has(valor)) {
+                    uniqueBeneficiariosGP1.add(valor);
+                    totalVidasAtivasGP1 += valor;
+                }
+            }
+        }
 
         for (let i = 1; i < tagsConsInic.length; i++) {
             const eventos = tagsConsInic[i].querySelector('eventos');
@@ -88,11 +123,15 @@ fileInput.addEventListener('change', () => {
             }
         }
 
+
+        resultVidasAtivasGP2.textContent = totalVidasAtivasGP2;
+        resultVidasAtivasGP1.textContent = totalVidasAtivasGP1;
         resultConsInic.textContent = totalConsInic;
         resultProcPrevent.textContent = totalProcPrevent;
         resultEndoConclDentesP.textContent = totalEndoConclDentesP;
         resultProtesesUnitarias.textContent = totalProtesesUnitarias;
         resultRaspSupraGengHemi.textContent = totalRaspSupraGengHemi;
+        console.log(ufsArr);
 
         resultDiv.style.display = 'block';
     };
@@ -100,6 +139,13 @@ fileInput.addEventListener('change', () => {
     reader.readAsText(file); // Inicia a leitura do arquivo
 })
 
+/*
+enviarBtn.addEventListener('click', () => {
+    somarValoresDaTag();
+});
+*/
+
+/*
 function somarValoresDaTag() {
     const file = fileInput.files[0];
     const reader = new FileReader();
@@ -130,5 +176,5 @@ function somarValoresDaTag() {
     };
 
     reader.readAsText(file); // Inicia a leitura do arquivo
-}
+}*/
 
