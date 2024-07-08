@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=2.0">
-  <title>XML Reader - Bryan Lamanna</title>    
+  <title>XML Reader - SIP</title>    
     <link rel="stylesheet" href="style.css" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -13,7 +13,7 @@
 <div class="container mt-5 upload">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h2 class="mb-4 text-white">Assistente de XML:</h2>
+      <h2 class="mb-4 text-white">Leitor de XML SIP</h2>
       <form>
         <div class="mb-3">
           <label for="fileInput" class="form-label">upload:</label>
@@ -24,28 +24,106 @@
   </div>
 </div>
 
-<div class="container mt-5 resultados">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h2 class="mb-4 text-white">Resultados:</h2>
-            <div class="card">
-                <div class="card-body">
-                    <p>Nº de consultas iniciais: <span class="consultasIniciais badge bg-success"></span><i onclick="copyNumber(0)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº de procedimentos preventivos: <span class="procedimentosPreventivos badge bg-success"></span><i onclick="copyNumber(1)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº dentes permanentes com endo concluida: <span class="dentesPermanentes badge bg-success"></span><i onclick="copyNumber(2)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº de proteses unitárias: <span class="protesesUnitarias badge bg-success"></span><i onclick="copyNumber(3)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº de raspagem supra gengival: <span class="raspagemSupra badge bg-success"></span><i onclick="copyNumber(4)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº total de vidas ativas grupo 1 (Total): <span class="vidasAtivasGP1 badge bg-success"></span><i onclick="copyNumber(5)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº total de vidas ativas grupo 2 (Crianças): <span class="vidasAtivasGP2 badge bg-success"></span><i onclick="copyNumber(6)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº total de vidas Individual Familiar: <span class="vidasIndividualFamiliar badge bg-success"></span><i onclick="copyNumber(7)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº total de vidas Coletivo Empresarial: <span class="vidasColetivoEmpresarial badge bg-success"></span><i onclick="copyNumber(8)" class="fa-regular fa-copy"></i></p>
-                    <p>Nº total de vidas Coletivo Adesão: <span class="vidasColetivoAdesao badge bg-success"></span><i onclick="copyNumber(9)" class="fa-regular fa-copy"></i></p>
-                  </div>    
-            </div>
-        </div>
-    </div>
-</div>
+<div class="container resultados">
 
+    <div id="accordion">
+      <div class="card" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link">
+              Totais
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <ul>
+              <li>Nº de consultas iniciais: <span class="consultasIniciais badge bg-success"></span></li>
+              <li>Nº de procedimentos preventivos: <span class="procedimentosPreventivos badge bg-success"></span></li>
+              <li>Nº dentes permanentes com endo concluída: <span class="dentesPermanentes badge bg-success"></span></li>
+              <li>Nº de próteses unitárias: <span class="protesesUnitarias badge bg-success"></span></li>
+              <li>Nº de raspagem supra gengival: <span class="raspagemSupra badge bg-success"></span></li>
+              <li>Nº total de vidas ativas grupo 1 (Total): <span class="vidasAtivasGP1 badge bg-success"></span></li>
+              <li>Nº total de vidas ativas grupo 2 (Crianças): <span class="vidasAtivasGP2 badge bg-success"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="accordion">
+      <div class="card" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link">
+            Individual Familiar
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <ul>
+                <li>Nº total de vidas Individual Familiar: <span class="vidasIndividualFamiliar badge bg-success"></span></li>              
+                <li>Nº de consultas iniciais: <span class="consultasIniciaisIndividualFamiliar badge bg-success"></span></li>
+                <li>Nº de procedimentos preventivos: <span class="procedimentosPreventivosIndividualFamiliar badge bg-success"></span></li>
+                <li>Nº de dentes permanentes com endo concluída: <span class="dentesPermanentesIndividualFamiliar badge bg-success"></span></li>
+                <li>Nº de proteses unitárias: <span class="protesesUnitariasIndividualFamiliar badge bg-success"></span></li>
+                <li>Nº de raspagem supra gengival: <span class="raspagemSupraIndividualFamiliar badge bg-success"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="accordion">
+      <div class="card" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link" >
+              Coletivo Empresarial
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            <ul>
+              <li>Nº total de vidas Coletivo Empresarial: <span class="vidasColetivoEmpresarial badge bg-success"></span></li>
+              <li>Nº de consultas iniciais: <span class="consultasIniciaisColetivoEmpresarial badge bg-success"></span></li>
+              <li>Nº de procedimentos preventivos: <span class="procedimentosPreventivosColetivoEmpresarial badge bg-success"></span></li>
+              <li>Nº de dentes permanentes com endo concluída: <span class="dentesPermanentesColetivoEmpresarial badge bg-success"></span></li>
+              <li>Nº de proteses unitárias: <span class="protesesUnitariasColetivoEmpresarial badge bg-success"></span></li>
+              <li>Nº de raspagem supra gengival: <span class="raspagemSupraColetivoEmpresarial badge bg-success"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="accordion">
+      <div class="card" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        <div class="card-header" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-link">
+              Coletivo por Adesão
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+          <div class="card-body">
+            <ul>
+              <li>Nº total de vidas Coletivo Adesão: <span class="vidasColetivoAdesao badge bg-success"></span></li>
+              <li>Nº de consultas iniciais: <span class="consultasIniciaisColetivoAdesao badge bg-success"></span></li>
+              <li>Nº de procedimentos preventivos: <span class="procedimentosPreventivosColetivoAdesao badge bg-success"></span></li>
+              <li>Nº de dentes permanentes com endo concluída: <span class="dentesPermanentesColetivoAdesao badge bg-success"></span></li>
+              <li>Nº de proteses unitárias: <span class="protesesUnitariasColetivoAdesao badge bg-success"></span></li>
+              <li>Nº de raspagem supra gengival: <span class="raspagemSupraColetivoAdesao badge bg-success"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
 
 <div class="container text-center">
     <div class="popup alert alert-danger text-center fixed-bottom" role="alert">
@@ -53,10 +131,10 @@
     </div>
 </div>
 
-
 <script src="script.js"></script>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

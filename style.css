@@ -1,7 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif
+} 
+
 .resultados span {
     font-weight: bold;
     font-size: medium;
 }
+
+.resultados {
+    width: 10%;
+    margin-bottom: 5em;
+    flex-direction: column;
+}
+
+#accordion {
+    cursor: pointer;
+    margin: 0 auto;
+    width: 48%;
+    margin-bottom: 0.3em;
+}
+
+#accordion li {
+    margin: 1em;
+    font-weight: 600;
+}
+
 
 .resultados i {
     margin-left: 8px;
@@ -22,3 +53,11 @@
   .show-popup {
    opacity: 1;
   }
+
+  #accordion button {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+
+ 
